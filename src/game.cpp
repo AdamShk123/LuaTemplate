@@ -270,7 +270,7 @@ void Game::run()
         SDL_SetRenderDrawColor(m_renderer, 0xFF, 0xFF, 0xFF, 0xFF); // set renderer color to white
         SDL_RenderClear(m_renderer); // clear screen
 
-        entity["process"](entity, (int)m_delta);
+        entity["process"](entity, m_delta / 1000.0f);
         sol::table props = entity["props"];
         sol::object x = props["x"];
         sol::object y = props["y"];

@@ -6,8 +6,7 @@
       "hidden": true,
       "generator": "Unix Makefiles",
       "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "VCPKG_TARGET_TRIPLET": "x64-linux-dynamic"
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
       }
     },
     {
@@ -29,29 +28,41 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
+    },
+    {
+      "name": "windows",
+      "displayName": "Windows",
+      "inherits": "base",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-windows"
+      }
+    },
+    {
+      "name": "linux",
+      "displayName": "Linux",
+      "inherits": "base",
+      "cacheVariables": {
+        "VCPKG_TARGET_TRIPLET": "x64-linux-dynamic"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "inherits": ["linux", "debug"]
+    },
+    {
+      "name": "windows-debug",
+      "inherits": ["windows", "debug"]
     }
   ],
   "buildPresets": [
     {
       "name": "linux-debug",
-      "configurePreset": "debug",
+
+      "configurePreset": "linux-debug",
       "displayName": "Linux Debug Build",
       "description": "Build with Linux debug settings",
-      "jobs": 4
-    },
-    {
-      "name": "linux-release",
-      "configurePreset": "release",
-      "displayName": "Linux Release Build",
-      "description": "Build with Linux release settings",
-      "jobs": 4
-    }
-  ],
-  "testPresets": [
-    {
-      "name": "all",
-      "displayName": "All Tests",
-      "configurePreset": "debug"
+      "jobs": 4,
+      "targets": ["template"]
     }
   ]
 }
