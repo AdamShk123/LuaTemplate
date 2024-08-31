@@ -1,0 +1,22 @@
+{
+  "name": "graphics",
+  "version": "1.0.0",
+  "dependencies": [
+    "fmt",
+    "gtest",
+    {
+      "name": "lua",
+      "features": [
+        "cpp"
+      ]
+    },
+    "sdl2",
+    {
+      "name": "sdl2-image",
+      "features": [
+        "libjpeg-turbo"
+      ]
+    },
+    "sol2"
+  ]
+}
